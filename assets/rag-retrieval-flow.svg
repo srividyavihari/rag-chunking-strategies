@@ -1,0 +1,53 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="370" viewBox="0 0 1200 370" role="img" aria-labelledby="title desc">
+  <title id="title">Chunking in a RAG retrieval flow</title>
+  <desc id="desc">A document is cleaned, chunked, embedded, retrieved for a query, and supplied to a language model.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#07152f"/><stop offset="1" stop-color="#102b52"/></linearGradient>
+    <marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto"><path d="M0 0l10 5-10 5z" fill="#65cce3"/></marker>
+    <style>
+      .box{fill:#112c51;stroke:#3f6e9e;stroke-width:2}
+      .accent{fill:#123f66;stroke:#42c9db;stroke-width:2.5}
+      .title{font:700 20px system-ui,-apple-system,"Segoe UI",sans-serif;fill:#f5f9ff;text-anchor:middle}
+      .sub{font:400 14px system-ui,-apple-system,"Segoe UI",sans-serif;fill:#afc4dc;text-anchor:middle}
+      .arrow{fill:none;stroke:#65cce3;stroke-width:3;marker-end:url(#arrow)}
+    </style>
+  </defs>
+  <rect width="1200" height="370" rx="26" fill="url(#bg)"/>
+  <text x="600" y="45" class="title" font-size="27">Chunking is the bridge between documents and retrieval</text>
+  <g transform="translate(35 105)">
+    <rect class="box" width="165" height="112" rx="16"/>
+    <path d="M59 25h47l20 20v43H39V25z" fill="#eaf3ff" opacity=".9"/><path d="M106 25v20h20" fill="none" stroke="#54779d" stroke-width="3"/>
+    <text x="82" y="137" class="title">Documents</text>
+  </g>
+  <path class="arrow" d="M208 161h65"/>
+  <g transform="translate(280 105)">
+    <rect class="box" width="165" height="112" rx="16"/>
+    <path d="M40 33h85M40 53h68M40 73h76" stroke="#84a5c6" stroke-width="6" stroke-linecap="round"/>
+    <text x="82" y="137" class="title">Clean &amp; parse</text>
+  </g>
+  <path class="arrow" d="M453 161h65"/>
+  <g transform="translate(525 90)">
+    <rect class="accent" width="165" height="142" rx="16"/>
+    <rect x="28" y="26" width="109" height="25" rx="6" fill="#18a8b7"/>
+    <rect x="28" y="58" width="109" height="25" rx="6" fill="#2780c1"/>
+    <rect x="28" y="90" width="109" height="25" rx="6" fill="#6b5fd2"/>
+    <text x="82" y="167" class="title">Chunk</text>
+    <text x="82" y="190" class="sub">the design decision</text>
+  </g>
+  <path class="arrow" d="M698 161h65"/>
+  <g transform="translate(770 105)">
+    <rect class="box" width="165" height="112" rx="16"/>
+    <g fill="#5dd2df"><circle cx="54" cy="40" r="7"/><circle cx="88" cy="28" r="7"/><circle cx="116" cy="48" r="7"/><circle cx="69" cy="71" r="7"/><circle cx="106" cy="77" r="7"/></g>
+    <path d="M54 40l34-12 28 20-10 29-37-6z" fill="none" stroke="#5dd2df" stroke-width="2"/>
+    <text x="82" y="137" class="title">Embed &amp; index</text>
+  </g>
+  <path class="arrow" d="M943 161h65"/>
+  <g transform="translate(1015 105)">
+    <rect class="box" width="150" height="112" rx="16"/>
+    <circle cx="75" cy="54" r="29" fill="none" stroke="#ffbd66" stroke-width="7"/>
+    <path d="M97 76l19 19" stroke="#ffbd66" stroke-width="7" stroke-linecap="round"/>
+    <text x="75" y="137" class="title">Retrieve</text>
+  </g>
+  <path d="M1090 310H690" stroke="#829ebd" stroke-width="2" stroke-dasharray="6 6" marker-end="url(#arrow)"/>
+  <text x="890" y="342" class="sub">query → matching chunks → LLM context</text>
+</svg>

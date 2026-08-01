@@ -1,0 +1,112 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="760" viewBox="0 0 1200 760" role="img" aria-labelledby="title desc">
+  <title id="title">Visual comparison of six RAG chunking strategies</title>
+  <desc id="desc">Six panels illustrate fixed-size, overlap, sentence, paragraph, recursive, and semantic chunking.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#07152f"/>
+      <stop offset="1" stop-color="#102b52"/>
+    </linearGradient>
+    <filter id="shadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="5" stdDeviation="7" flood-color="#020817" flood-opacity=".4"/>
+    </filter>
+    <style>
+      .card{fill:#0e2444;stroke:#31547b;stroke-width:1.5;filter:url(#shadow)}
+      .head{font:700 22px system-ui,-apple-system,"Segoe UI",sans-serif;fill:#f4f8ff}
+      .sub{font:400 14px system-ui,-apple-system,"Segoe UI",sans-serif;fill:#aac1dc}
+      .label{font:600 13px system-ui,-apple-system,"Segoe UI",sans-serif;fill:#dceaff}
+      .line{stroke:#809abd;stroke-width:5;stroke-linecap:round;opacity:.72}
+      .rule{stroke:#55769d;stroke-width:1;stroke-dasharray:4 5}
+    </style>
+  </defs>
+  <rect width="1200" height="760" rx="28" fill="url(#bg)"/>
+  <text x="60" y="54" class="head" font-size="28">How each strategy sees the same document</text>
+  <text x="60" y="82" class="sub">Boundaries move from arbitrary length to document structure and meaning.</text>
+
+  <!-- Fixed size -->
+  <g transform="translate(50 115)">
+    <rect class="card" width="350" height="270" rx="18"/>
+    <text x="24" y="38" class="head">1 · Fixed size</text>
+    <text x="24" y="62" class="sub">Equal token windows</text>
+    <rect x="24" y="91" width="92" height="96" rx="10" fill="#177f9e"/>
+    <rect x="129" y="91" width="92" height="96" rx="10" fill="#2168b2"/>
+    <rect x="234" y="91" width="92" height="96" rx="10" fill="#6659c7"/>
+    <path class="line" d="M39 112h61m-61 18h61m-61 18h61m-61 18h37M144 112h61m-61 18h61m-61 18h61m-61 18h43M249 112h61m-61 18h61m-61 18h61m-61 18h25"/>
+    <text x="24" y="223" class="label">✓ Fast and predictable</text>
+    <text x="24" y="246" class="sub">△ Can split a thought mid-sentence</text>
+  </g>
+
+  <!-- Overlap -->
+  <g transform="translate(425 115)">
+    <rect class="card" width="350" height="270" rx="18"/>
+    <text x="24" y="38" class="head">2 · Fixed size + overlap</text>
+    <text x="24" y="62" class="sub">Repeated context at each edge</text>
+    <rect x="24" y="96" width="130" height="88" rx="10" fill="#177f9e"/>
+    <rect x="112" y="96" width="130" height="88" rx="10" fill="#2168b2" fill-opacity=".9"/>
+    <rect x="200" y="96" width="126" height="88" rx="10" fill="#6659c7" fill-opacity=".9"/>
+    <rect x="112" y="96" width="42" height="88" fill="#28bdd2" fill-opacity=".75"/>
+    <rect x="200" y="96" width="42" height="88" fill="#45a4d9" fill-opacity=".75"/>
+    <path class="line" d="M39 117h96m-96 18h96m-96 18h96m88-36h84m-84 18h84m-84 18h84"/>
+    <text x="24" y="223" class="label">✓ Protects boundary context</text>
+    <text x="24" y="246" class="sub">△ More vectors and duplicate hits</text>
+  </g>
+
+  <!-- Sentence -->
+  <g transform="translate(800 115)">
+    <rect class="card" width="350" height="270" rx="18"/>
+    <text x="24" y="38" class="head">3 · Sentence based</text>
+    <text x="24" y="62" class="sub">Stops at linguistic boundaries</text>
+    <rect x="24" y="94" width="302" height="32" rx="8" fill="#177f9e"/>
+    <rect x="24" y="134" width="226" height="32" rx="8" fill="#2168b2"/>
+    <rect x="24" y="174" width="274" height="32" rx="8" fill="#6659c7"/>
+    <circle cx="312" cy="110" r="3" fill="#fff"/>
+    <circle cx="236" cy="150" r="3" fill="#fff"/>
+    <circle cx="284" cy="190" r="3" fill="#fff"/>
+    <text x="24" y="230" class="label">✓ Reads naturally</text>
+    <text x="24" y="253" class="sub">△ Length can vary widely</text>
+  </g>
+
+  <!-- Paragraph -->
+  <g transform="translate(50 415)">
+    <rect class="card" width="350" height="270" rx="18"/>
+    <text x="24" y="38" class="head">4 · Paragraph based</text>
+    <text x="24" y="62" class="sub">Keeps authored ideas together</text>
+    <rect x="24" y="91" width="302" height="65" rx="10" fill="#137f89"/>
+    <path class="line" d="M40 110h267m-267 16h242m-242 16h154"/>
+    <rect x="24" y="168" width="302" height="45" rx="10" fill="#4b62b7"/>
+    <path class="line" d="M40 187h267m-267 16h184"/>
+    <text x="24" y="238" class="label">✓ Strong for prose and narrative</text>
+    <text x="24" y="258" class="sub">△ Oversized paragraphs need fallback</text>
+  </g>
+
+  <!-- Recursive -->
+  <g transform="translate(425 415)">
+    <rect class="card" width="350" height="270" rx="18"/>
+    <text x="24" y="38" class="head">5 · Recursive</text>
+    <text x="24" y="62" class="sub">Tries coarse separators first</text>
+    <rect x="24" y="91" width="302" height="128" rx="10" fill="#102f57" stroke="#338fbc"/>
+    <rect x="40" y="105" width="270" height="25" rx="6" fill="#177f9e"/>
+    <rect x="40" y="141" width="126" height="62" rx="7" fill="#2168b2"/>
+    <rect x="177" y="141" width="133" height="62" rx="7" fill="#6659c7"/>
+    <text x="51" y="123" class="label">Section</text>
+    <text x="51" y="166" class="label">Paragraph</text>
+    <path class="rule" d="M51 181h94M188 164h101m-101 17h86"/>
+    <text x="24" y="244" class="label">✓ Balanced production default</text>
+    <text x="24" y="263" class="sub">△ Separator order matters</text>
+  </g>
+
+  <!-- Semantic -->
+  <g transform="translate(800 415)">
+    <rect class="card" width="350" height="270" rx="18"/>
+    <text x="24" y="38" class="head">6 · Semantic</text>
+    <text x="24" y="62" class="sub">Breaks when the topic changes</text>
+    <path d="M25 180 C62 178 72 120 111 126 S159 174 191 165 S222 98 263 105 S294 145 326 91" fill="none" stroke="#4cd7df" stroke-width="4"/>
+    <path class="rule" d="M128 87v112M235 87v112"/>
+    <circle cx="128" cy="124" r="7" fill="#ffbc62"/>
+    <circle cx="235" cy="116" r="7" fill="#ffbc62"/>
+    <text x="47" y="102" class="label">Topic A</text>
+    <text x="148" y="102" class="label">Topic B</text>
+    <text x="253" y="102" class="label">Topic C</text>
+    <text x="24" y="230" class="label">✓ Meaning-aware boundaries</text>
+    <text x="24" y="253" class="sub">△ Highest compute and complexity</text>
+  </g>
+</svg>
